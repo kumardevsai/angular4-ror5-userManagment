@@ -1,0 +1,35 @@
+<div class="jumbotron">
+    <h2>Login Form</h2>
+    <div class="alert alert-info">
+        Username: user@example.com<br />
+        Password: monkey67
+    </div>
+    
+    <form [formGroup]="complexForm" (ngSubmit)="submitForm(complexForm.value)" >
+      <div class="form-group">
+        <label>Email:</label>
+        <input class="form-control" type="text" placeholder="John@example.com" [formControl]="complexForm.controls['email']">
+      </div>
+      <div *ngIf="complexForm.controls['email'].invalid && (complexForm.controls['email'].dirty || complexForm.controls['email'].touched)" class="alert alert-danger">
+        <div *ngIf="complexForm.controls['email'].errors.required">
+          Name is required.
+        </div>
+      </div>   
+      <div class="form-group">
+        <label>Password</label>
+        <input class="form-control" type="password"  [formControl]="complexForm.controls['password']">
+      </div>
+      <div *ngIf="complexForm.controls['password'].invalid && (complexForm.controls['password'].dirty )" class="alert alert-danger">
+            <div *ngIf="complexForm.controls['password'].errors.required">
+              password is required.
+            </div>
+            <div *ngIf="complexForm.controls['password'].hasError('minlength')">
+                    8 characters are requiered as Min length.
+            </div>
+      </div>  
+     
+      <div class="form-group">
+          <button type="submit" class="btn btn-primary" [disabled]="!complexForm.valid" >Submit</button>
+      </div>
+    </form>
+    </div>

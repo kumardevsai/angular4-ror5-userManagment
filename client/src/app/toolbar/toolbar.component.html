@@ -1,0 +1,20 @@
+<div class="container">
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+      <!-- Navbar content -->
+      <a class="navbar-brand"[routerLink]="['']" id="logo-container">Rails & Angular Auth</a>
+      <ul class="navbar-nav mr-auto list-inline float-right">
+        <li class="nav-item" *ngIf="!(authService.userSignedIn$ | async)">
+          <a class="nav-link" [routerLink]="['/login']">Login</a>
+        </li>
+        <li class="nav-item"*ngIf="!(authService.userSignedIn$ | async)">
+          <a class="nav-link" [routerLink]="['/register']">REGISTER</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/profile']" >PROFILE</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="logOut()" >LOGOUT</a>
+        </li>
+    </ul>
+    </nav>
+  </div>
